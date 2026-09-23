@@ -1,3 +1,4 @@
+![Sleep Health banner](Docs/banner_sleep.svg)
 # Sleep, Stress and Occupation: An Unsupervised Analysis of the Sleep Health and Lifestyle Dataset
 
 An unsupervised analysis of the [Sleep Health and Lifestyle dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset) (374 records, 13 attributes): clustering is performed **without ever showing the diagnostic label (Sleep Disorder)** to any algorithm, then the resulting groups are compared post-hoc against the diagnosis to see whether unsupervised structure has anything to do with it. A Bayesian Network is also learned to model conditional dependencies between all variables, including the diagnosis.
