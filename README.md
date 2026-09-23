@@ -2,11 +2,10 @@
 
 An unsupervised analysis of the [Sleep Health and Lifestyle dataset](https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset) (374 records, 13 attributes): clustering is performed **without ever showing the diagnostic label (Sleep Disorder)** to any algorithm, then the resulting groups are compared post-hoc against the diagnosis to see whether unsupervised structure has anything to do with it. A Bayesian Network is also learned to model conditional dependencies between all variables, including the diagnosis.
 
-Exam project for *Machine Learning for Modelling*, coursework in unsupervised learning and probabilistic graphical models.
 
 ## Overview
 
-- **Clustering.** Three techniques — agglomerative hierarchical clustering (Complete and Ward linkage), k-means (random and k-means++ init) and DBSCAN — are each run on the full 21-dimensional feature space and on an 8-component PCA-reduced space, for 10 configurations total. Compared via internal criteria (silhouette, WSS/BSS) and external criteria against the (held-out) diagnosis (ARI, V-measure, purity).
+- **Clustering.** Three techniques, agglomerative hierarchical clustering (Complete and Ward linkage), k-means (random and k-means++ init) and DBSCAN, are each run on the full 21-dimensional feature space and on an 8-component PCA-reduced space, for 10 configurations total. Compared via internal criteria (silhouette, WSS/BSS) and external criteria against the (held-out) diagnosis (ARI, V-measure, purity).
 - **Bayesian Network.** A Directed Acyclic Graph is learned over all variables (including Sleep Disorder as a node) with Hill Climbing (BIC score), then cross-checked against a constraint-based structure (PC algorithm), to model which variables carry information about the diagnosis and through which paths.
 
 ## Key results
@@ -22,18 +21,18 @@ Exam project for *Machine Learning for Modelling*, coursework in unsupervised le
 
 Even though no algorithm ever saw the diagnosis, agreement with it is well above chance in every configuration (ARI up to 0.224, purity up to 0.93) — though never strong enough to reproduce it outright. The Bayesian Network recovers a physiological chain `BMI → sleep quality → sleep duration → stress → heart rate`, with stress and sleep quality informing the diagnosis only indirectly, through systolic pressure.
 
-Full methodology, all ten configurations, the DAG figures and the discussion are in [`docs/Report.pdf`](docs/Report.pdf).
+Full methodology, all ten configurations, the DAG figures and the discussion are in [`Docs/Report.pdf`](Docs/Report.pdf).
 
 ## Repository structure
 
 ```
 .
-├── notebooks/
+├── Notebooks/
 │   ├── helper.ipynb      # Shared preprocessing, clustering and evaluation utilities
 │   └── main.ipynb        # End-to-end analysis: clustering, model selection, Bayesian network
-├── data/
+├── Data/
 │   └── Sleep_health_and_lifestyle_dataset.csv
-├── docs/
+├── Docs/
 │   ├── Report.pdf
 │   └── Sleep_Health_and_Lifestyle.pptx
 ├── requirements.txt
